@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="./game.svg">
+        <title>Game Reviews</title>
+        <link rel="stylesheet" type="text/css" href="./index.css">
+    </head>
+    <body>
+        <div class="header"> RauhaanReviews
+            <a href="/api/v1/reviews" class="button" style="float:right">Reviews</a>
+        </div>
+        <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous">
+        </script>
+        <div class="allReviews">
+        </div>
+        <script>
+            const fetchReviews = async () => {
+                try {
+                    const {data} = await axios.get('/api/v1/reviews')
+                    const revs = data.data.map((review) => {
+                        return `<div class="singleReview">
+                                    <p id="review-title">Title: ${review.name}</p>
+                                    <p id="review-rating">Rating: ${review.rating}</p>
+                                    <p id="review-summary">Summary: ${review.desc}</p>
+                                </div>`
+                    })
+                    document.getElementsByClassName("allReviews")[0].innerHTML = revs.join('');
+                } catch (error) {
+                    document.getElementsByClassName('allReviews').innerHTML = `<div class="alert alert-danger">Can't Fetch Data</div>`
+                }
+            }
+            fetchReviews()
+        </script>
+        <form class="search-form" action="/api/v1/search" method="GET">
+            <div>
+              <label for="title">Enter a video game title</label>
+              <input name="title" id="title">
+            </div>
+            <button type="submit" class="block-submit-btn">Search</button>
+        </form>
+
+        <form id='write-review' action="/api/v1/reviews">
+            <div>
+              <label for="name">Title</label>
+              <input type="text" name="name" id="name">
+              <label for="score">Rating</label>
+              <input type="number" name="score" id="score">
+              <label for="review">Summary</label>
+              <input type="text" name="review" id="review">
+            </div>
+            <button type="submit" class="create-review-btn">Post Review</button>
+
+        </form>
+        <script>
+            const submitRevBtn = document.querySelector('.create-review-btn');
+            submitRevBtn.addEventListener('click', async(e) => {
+                // var fReader = new FileReader();
+                const inptitle = document.querySelector('#name').value;
+                const inpscore = document.querySelector('#score').value;
+                const inpreview = document.querySelector('#review').value;
+
+                e.preventDefault();
+                try {
+                    const {data} = await axios.post('/api/v1/reviews', { title: inptitle, score: inpscore, review: inpreview })
+                    const newDiv = `<div class="singleReview">
+                                    <p>Title: ${data.data.name}</p>
+                                    <p>Rating: ${data.data.rating}</p>
+                                    <p>Summary: ${data.data.desc}</p>
+                                </div>`
+
+                    document.getElementsByClassName("allReviews")[0].innerHTML += newDiv;
+                } catch (error) {
+                    console.log(error.response)
+                }
+            })
+        </script>
+
+    </body>
+</html>

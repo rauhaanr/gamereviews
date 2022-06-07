@@ -1,0 +1,62 @@
+.header {
+    background-color: rgb(29, 31, 31);
+    color: rgb(255, 153, 0);
+    height: 95px;
+    font-size: 50px;
+    text-align: left;
+    padding: 50px 20px 20px 20px;
+    font-family: "Arial", Times, serif;
+}
+
+.button {
+    background-color: #6462e1;
+    border: none;
+    color: white;
+    height: 50px;
+    width: 100px;
+    padding: 0 0 0 27px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.allReviews {
+    background-color: #ededf2;
+    border: red;
+}
+
+#write-review {
+    background-color: #dab869;
+    border-style: solid;
+    border-color: rgb(18, 19, 49);
+    padding: 20px 20px 20px 20px;
+}
+
+.singleReview {
+    background-color: #9393e2;
+    border-style: solid;
+    border-color: rgb(18, 19, 49);
+    padding: 20px 20px 20px 20px;
+}
+
+.search-form {
+    background-color: #93e2b4;
+    border-style: solid;
+    border-color: rgb(18, 19, 49);
+    padding: 20px 20px 20px 20px;
+}
+
+.block-submit-btn {
+    margin: 20px 0 0 0;
+}
+
+.create-review-btn{
+    margin: 20px 0 0 0;
+}
+
