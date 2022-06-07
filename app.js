@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const reviewsList = require('./routes/reviewOps');
 const searchReview = require('./routes/search');
+const Review = require('./models/review');
 
 app = express();
 
@@ -21,3 +22,19 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use('/api/v1/reviews', reviewsList);
 app.use('/api/v1/search', searchReview);
+
+// app.get('/add-review', (req, res) => {
+//     const newReview = new Review({
+//         id: 9, 
+//         name: 'Nier',
+//         rating: 4,
+//         desc: 'Nier is awesome!'
+//     })
+//     newReview.save()
+//         .then((result) => {
+//             res.send(result)
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//         })
+// })
