@@ -17,5 +17,11 @@
     - Params: `id`
     - Body `{ name: "abc" }`
 
-- Delete review by ID (DELETE): /api/v1/review/id
+- Delete review by ID (DELETE): `/api/v1/review/id`
     - Params: `id`
+
+
+## Run server
+- `git clone https://github.com/rauhaanr/gamereviews`
+- `npm install`
+- `npm start`
