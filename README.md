@@ -2,24 +2,20 @@
 
 ## API usage
 
-- All reviews (GET): /api/v1/reviews
+- All reviews (GET): `/api/v1/reviews`
 
-- Review by ID (GET): /api/v1/reviews/id
-    - Params: id
+- Review by ID (GET): `/api/v1/reviews/id`
+    - Params: `id`
 
-- Search by title (GET): /api/v1/search?title=abc
-    - Query params: title
+- Search by title (GET): `/api/v1/search?title=abc`
+    - Query params: `title`
 
-- Create review (POST): /api/v1/reviews
-    - Body: {
-        title: "Name",
-        score: 5,
-        review: "This is a review"
-      }
+- Create review (POST): `/api/v1/reviews`
+    - Body: `{ title: "Name", score: 5, review: "This is a review" }`
       
-- Update review title (PUT): /api/v1/reviews/id
-    - Params: id
-    - Body { name: "abc"}
+- Update review title (PUT): `/api/v1/reviews/id`
+    - Params: `id`
+    - Body `{ name: "abc" }`
 
 - Delete review by ID (DELETE): /api/v1/review/id
-    - Params: id
+    - Params: `id`
