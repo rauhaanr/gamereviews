@@ -1,13 +1,16 @@
-const {reviews} = require('../data');
+// const {reviews} = require('../data');
+const mongoose = require('mongoose');
+const Review = require('../models/review');
 const { search } = require('../routes/reviewOps');
 
-const searchReview = (req, res) => {
+const searchReview = async (req, res) => {
 
     const title = req.query.title;
-    let allReviews = [...reviews]
+    let allReviews = await Review.find()
+    console.log(allReviews);
 
-    // Check if user has provided 'search' query parameter
-    if (title != ''){
+    // Check if user has provided 'title' query parameter
+    if (title && title != ''){
         allReviews = allReviews.filter( (rev) => {
             return rev.name.startsWith(title.toLowerCase())
         })
