@@ -25,3 +25,6 @@
 - `git clone https://github.com/rauhaanr/gamereviews`
 - `npm install`
 - `npm start`
+
+## Run serverless
+- `npm run serverless`
